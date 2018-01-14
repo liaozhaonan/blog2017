@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}关于{% endblock %}
+
+{% block content %}
+<div class="col-md-10 col-md-offset-1" id="about-content">
+    <h4><i class="fa fa-address-card-o fa-lg"></i>&nbsp;关于博主</h4>
+    <div>
+        <label class="label label-primary">理想主义</label>
+        <label class="label label-danger">有好奇心</label>
+        <label class="label label-warning">坚持不懈</label>
+        <label class="label label-info">Python</label>
+        <label class="label label-success">JavaScript</label>
+    </div>
+    <div class="about-box row">
+        <div class="col-md-10 col-md-offset-1">
+            <h4>&lt;<span class="text-info">profile</span>&gt;</h4>
+            <h4 class="layer2">&lt;<span class="text-info">basic-info</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">name</span>&gt;名字&lt;/<span class="text-info">name</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">birthday</span>&gt;生日&lt;/<span class="text-info">birthday</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">hometown</span>&gt;籍贯&lt;<span class="text-info">hometown</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">personality</span>&gt;理想主义、有好奇心、敢于尝试、坚持不懈&lt;/<span class="text-info">personality</span>&gt;</h4>
+            <h4 class="layer2">&lt;/<span class="text-info">basic-info</span>&gt;</h4>
+            <h4 class="layer2">&lt;<span class="text-info">education</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">graduate</span>&gt;毕业院校&lt;/<span class="text-info">graduate</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">major</span>&gt;专业&lt;/<span class="text-info">major</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">degree</span>&gt;学位&lt;/<span class="text-info">degree</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">language-skill</span>&gt;CET-6&lt;/<span class="text-info">language-skill</span>&gt;</h4>
+            <h4 class="layer2">&lt;/<span class="text-info">education</span>&gt;</h4>
+            <h4 class="layer2">&lt;<span class="text-info">contact</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">qq</span>&gt;123456789&lt;/<span class="text-info">qq</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">email</span>&gt;example@gmail.com&lt;/<span class="text-info">email</span>&gt;</h4>
+            <h4 class="layer3">&lt;<span class="text-info">github</span>&gt;<a href="https://github.com/liaozhaonan">https://github.com/liaozhaonan</a>&lt;/<span class="text-info">github</span>&gt;</h4>
+            <h4 class="layer2">&lt;/<span class="text-info">contact</span>&gt;</h4>
+            <h4>&lt;/<span class="text-info">profile</span>&gt;</h4>
+            <br/>
+            <h4>"<span class="text-danger">Programming_skills</span>": {</h4>
+            <h4 class="layer2">"<span class="text-danger">Languages</span>" :  ["Python", "JavaScript"],</h4>
+            <h4 class="layer2">"<span class="text-danger">Frameworks</span>": ["Django", "Bootstrap"],</h4>
+            <h4 class="layer2">"<span class="text-danger">Library</span>": "JQuery",</h4>
+            <h4 class="layer2">"<span class="text-danger">Database</span>": "MySQL",</h4>
+            <h4 class="layer2">"<span class="text-danger">Web</span>": "HTTP"</h4>
+            <h4>}</h4>
+        </div>
+    </div>
+    <h4><i class="fa fa-gear fa-lg"></i>关于博客</h4>
+    <div>
+        <label class="label label-success">个人成长</label>
+        <label class="label label-primary">编程技术</label>
+        <label class="label label-danger">交流经验</label>
+        <label class="label label-info">生活感悟</label>
+    </div>
+    <div class="about-box">
+        <h4 class="text-info">简介</h4>
+        <p class="layer2">本博客建于2017年12月20日。</p>
+        <p class="layer2">本博客用于记录个人工作中的用到的技术知识、反思，以及生活中的感悟。</p>
+        <br/>
+        <h4 class="text-info">更新</h4>
+        <p class="layer2">尚无更新</p>
+    </div>
+</div>
+{%endblock%}

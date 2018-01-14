@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}留言板{% endblock %}
+
+{% block content %}
+<h5 id="msg-menu">
+    <strong>&nbsp;选择留言分类:&nbsp;&nbsp;</strong>
+    <button class="btn btn-xs btn-info"><a href="?types=all">
+        <i class="fa fa-rss">&nbsp;</i>全部</a>
+    </button>
+    <button class="btn btn-xs"><a href="?types=programming">
+        <i class="fa fa-desktop"></i>&nbsp;编程</a>
+    </button>
+    <button class="btn btn-xs"><a href="?types=others">
+        <i class="fa fa-filter">&nbsp;</i>其他</a>
+    </button>
+    <a class="h4 text-info pull-right" data-toggle="modal" href="#msg-modal">
+        <strong><i class="fa fa-edit fa-lg">&nbsp;</i>点我留言</strong>
+    </a>
+</h5>
+
+{% include 'widgets/message-modal.html' %}
+
+{% if form.errors %}
+<div class="msg-card">
+    <h4 class="text-danger">留言失败，请点击
+        <a data-toggle="modal" href="#msg-modal">这里</a>
+        查看原因，修改并再次提交
+    </h4>
+</div>
+{% endif %}
+
+<div id="msg-list">
+    {% include 'widgets/message-list.html' %}
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/messages.js' %}"></script>
+{% endblock %}

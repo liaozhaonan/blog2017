@@ -1,0 +1,7 @@
+留言成功！
+    昵称： {{ message.nickname }}
+    性别： {% if message.gender == 'M' %}男{% else %}女{% endif %}
+    邮箱： {{ message.email }}
+    留言分类： {% if message.types == 'P' %}编程{% else %}其他{% endif %}
+    留言内容： {{ message.content }}
+    有回复时发邮件通知： {% if message.notice %}是{% else %}否{% endif %}

@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}首页{% endblock%} - zhaonan的网络日志</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" content="liaozhaonan"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="keywords" content="技术博客,JavaScript,Python,Web"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+        maximum-scale=1, user-scalable=no"/>
+    <meta name="description" content="个人博客用于记录JavaScript, Python,
+        Web等技术的学习和使用心得,以及读书体会和生活感想等"/>
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}"/>
+    <link rel="stylesheet"
+        href="{% static 'font-awesome/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
+    {% block css %}{% endblock %}
+    <!--[if lt IE 9]>
+    <script src="https:// oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+    </script>
+    <script src="https:// oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+    </script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        {% include 'widgets/nav.html' %}
+    </header>
+    {% block cover %}
+    <img src="{% static 'images/cover.png' %}" alt="" id="img-cover">
+    {% endblock %}
+    <!-- 主内容区 begin -->
+    <div id="main-content">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- 主内容区 end -->
+    <a id="back-to-top" href="#">
+        <img  src="{% static 'images/top.png' %}">
+        <p>返回顶部</p>
+    </a>
+    <div class="footer">
+        <div class="hidden-xs text-center">
+            <hr/>
+            <ul class="list-inline">
+                <li>zhaonan'blog</li>
+                <li>基于:
+                    <a href="http://www.djangoproject.com/" target="_blank">
+                        Django
+                    </a>
+                </li>
+                <li>
+                    <a href="http://getbootstrap.com/" target="_blank">
+                        Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.fontawesome.com" target="_blank">
+                        Font Awesome
+                    </a>
+                </li>
+            </ul>
+            <br/>
+        </div>
+    </div>
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

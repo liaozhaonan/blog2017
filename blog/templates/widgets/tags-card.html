@@ -1,0 +1,18 @@
+<div class="articles-right-card">
+    <h5><strong><i class="fa fa-tags fa-lg"></i>&nbsp;标签</strong></h5>
+    <div id="tags-box" class="tag">
+        <h5>
+            {% if tags %}
+                {% for tag in tags %}
+                &nbsp;
+                <a href="{% url 'blog:tag' tag.id %}">
+                    <span class="label label-danger">{{ tag.name }}</span>
+                </a>
+                &nbsp;
+                {% endfor %}
+            {% else %}
+                <p>暂无分类</p>
+            {% endif %}
+       </h5>
+   </div>
+</div>

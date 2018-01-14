@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!-- 公告&&提示 -->
+<div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+        x
+    </button>
+    <p><li class="fa fa-volume-up"></li>&nbsp;{{ notice }}</p>
+</div>
+<!-- #home-panels begin -->
+<div id="home-panels" class="row">
+    <!-- 左边面板 begin -->
+    <div id="home-left-panel" class="col-md-4">
+        <!-- 最新文章 begin -->
+        <div class="well card">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <h5>
+                        <i class="fa fa-clock-o fa-lg"></i>
+                        <strong>最新文章</strong>
+                    </h5>
+                </thead>
+                <tbody>
+                    {% for recent in recents %}
+                    <tr>
+                        <td class="col-xs-2">{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'blog:article' recent.slug %}">
+                            {{ recent.title }}
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- 最新文章 end -->
+        <!-- 热门文章 begin -->
+        <div class="well card">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <h5>
+                        <i class="fa fa-star fa-lg"></i>
+                        <strong>热门文章</strong>
+                    </h5>
+                </thead>
+                <tbody>
+                    {% for hot in hots %}
+                    <tr>
+                        <td class="col-xs-2">{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'blog:article' hot.slug %}">
+                            {{ hot.title }}
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- 热门文章 end -->
+    </div>
+    <!-- 左边面板 end -->
+    <!-- 右边面板 begin -->
+    <div class="col-md-8">
+        <!-- 推荐阅读 begin -->
+        <div id="recommend-box" class="card">
+            <h5>
+                <i class="fa fa-bolt fa-lg"></i>
+                <strong>推荐阅读</strong>
+            </h5>
+            <div data-ride="carousel" id="recommend-body"
+                class="carousel slide">
+                <!-- 图片容器 -->
+                <div class="carousel-inner">
+                    {% if recommends %}
+                        {% for recommend in recommends %}
+                        <div class="item {% if forloop.counter == 1 %}
+                                            active
+                                        {% endif %}">
+                            <img src="{{ recommend.recommend_pic.url }}"
+                                alt="{{ recommend.title }}"/>
+                            <div class="carousel-caption">
+                                <a href="{% url 'blog:article' recommend.slug %}">
+                                    <h3>{{ recommend.title }}</h3>
+                                    <p>{{ recommend.summary }}</p>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="item active">
+                            <img src="{% static 'images/recommend/default.jpg' %}" alt="尚无推荐"/>
+                            <div class="carousel-caption">
+                                <h3>尚无推荐</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <!-- 圆圈指示符 -->
+                <ol class="carousel-indicators">
+                    {% if recommends %}
+                        {% for recommend in recommends %}
+                        <li data-slide-to="{{ forloop.counter0 }}"
+                            data-target="#recommend-body">
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <li data-slide-to="0" data-target="#recommend-body">
+                        </li>
+                    {% endif %}
+                </ol>
+                <!-- 左右按钮 -->
+                <a data-slide="prev" class="left carousel-control"
+                    href="#recommend-body">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a data-slide="next" class="right carousel-control"
+                     href="#recommend-body">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+        <!-- 推荐阅读 end -->
+        <!-- 文章专栏介绍 begin -->
+        <div class="intro-group">
+            <div class="col-md-3 intro text-center text-muted">
+                <a href="{% url 'blog:index' %}?column=1">
+                    <span class="fa-stack fa-3x text-danger">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-keyboard-o fa-stack-1x"></i>
+                    </span>
+                </a>
+                <div>
+                    <h4>编程</h4>
+                    <p>探讨技术，交流经验</p>
+                </div>
+            </div>
+            <div class="col-md-3 intro text-center text-muted">
+                <a href="{% url 'blog:index' %}?column=2">
+                    <span class="fa-stack fa-3x text-primary">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-book fa-stack-1x"></i>
+                    </span>
+                </a>
+                <div>
+                    <h4>读书</h4>
+                    <p>分享知识，表达观点</p>
+                </div>
+            </div>
+            <div class="col-md-3 intro text-center text-muted">
+                <a href="{% url 'blog:index' %}?column=3">
+                    <span class="fa-stack fa-3x text-success">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-pencil fa-stack-1x"></i>
+                    </span>
+                </a>
+                <div>
+                    <h4>随笔</h4>
+                    <p>生活有感，碎碎念之</p>
+                </div>
+            </div>
+            <div class="col-md-3 intro text-center text-muted">
+                <span class="fa-stack fa-3x text-info">
+                    <i class="fa fa-circle-thin fa-stack-2x"></i>
+                    <i class="fa fa-plus fa-stack-1x"></i>
+                </span>
+            <div>
+                <h4>其他</h4>
+                <p>更多栏目，敬请期待</p>
+            </div>
+        </div>
+        <!-- 专栏介绍 end -->
+    </div>
+    <!-- 右边面板 end -->
+</div>
+<!-- #home-panels end -->
+{% endblock %}

@@ -1,0 +1,40 @@
+{% if comment %}
+<div class="comment-box bg-success">
+    <h5 class="text-muted">
+        <label class="label label-danger">我的评论</label>&nbsp;
+        <strong>{{ comment.nickname }}</strong>
+        <span class="h6">
+            发表于&nbsp;{{ comment.created_time|date:"Y-m-d H:i" }}
+        </span>
+    </h5>
+    <div class="comment">
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.content}}
+            <span class="h6 pull-right text-primary">
+                <span class="comment-up"
+                    data-target="{% url 'comment:comment-upvote' comment.id %}">
+                    <i class="fa fa-thumbs-o-up" >&nbsp;({{ comment.up_times }})</i>
+                </span>&nbsp;&nbsp;
+                <span class="subcomment-add" id="add-to-comment-{{comment.id}}"
+                    data-target="{% url 'comment:subcomment-create' comment.id %}">
+                    回复
+                </span>&nbsp;&nbsp;
+            </span>
+        </p>
+    </div>
+</div>
+{% elif subcomment %}
+<div class="subcomment bg-success">
+    <h5 class="text-muted">
+        <label class="label label-danger">我的回复</label>&nbsp;
+        <strong>{{ subcomment.nickname }}</strong>
+        <span class="h6">回复</span>
+    </h5>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ subcomment.content }}
+        <span class="h6 text-muted">
+            &nbsp;&nbsp;{{ subcomment.created_time|date:"Y-m-d H:i" }}
+        </span>
+    </p>
+</div>
+{% endif %}

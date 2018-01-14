@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{tag}} | 标签{% endblock %}
+
+{% block cover %}
+<div id="cover">
+    <h4>
+        <small>
+            <i class="fa fa-map-marker"></i>&nbsp;你的位置:
+            <a href="/">首页</a> >
+            <a href="{% url 'blog:index' %}">博客</a> >
+            标签 >
+            {{ tag }}
+        </small>
+    </h4>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-sm-1" id="tag-title">
+    <br/>
+    <h4>
+        <label class="label label-danger">
+            <i class="fa fa-tag">&nbsp;</i>{{ tag }}
+        </label>
+    </h4>
+    <h5 class="text-muted">
+        &nbsp;&nbsp;&nbsp;共<span class="text-danger"> {{count}} </span>篇
+    </h5>
+</div>
+<div class="col-sm-10" id="articles-of-page">
+    {% include 'widgets/article-list.html' %}
+</div>
+{% endblock %}

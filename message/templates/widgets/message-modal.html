@@ -1,0 +1,104 @@
+<div class="modal" id="msg-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true">x</button>
+                <h4 class="modal-title">请写下你的留言</h4>
+                {{ form.non_field_errors }}
+            </div>
+            <form class="form-horizontal" id="msg-form" method="post"
+                action="{% url 'message:create' %}" role="form">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="nickname" class="control-label col-sm-2">
+                            昵称
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="nickname"
+                                name="nickname" value="{{form.data.nickname}}"
+                                required="required" placeholder="你的昵称"/>
+                            <span>(仅能包含中文，数字，字母和@_-)</span>
+                        </div>
+                        <h5 class="text-danger">{{form.nickname.errors}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            性别&nbsp;&nbsp;
+                        </label>
+                        <div class="radio col-sm-7">
+                            <label>
+                                <input type="radio" name="gender" value="M"
+                                    checked="checked">男
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                <input type="radio" name="gender" value="F">女
+                            </label>
+                        </div>
+                        <h5 class="text-danger">{{form.gender.errors}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label col-sm-2">
+                            邮箱
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="email" class="form-control" id="email"
+                                name="email" value="{{form.data.email}}"
+                                required="required" placeholder="你的邮箱"/>
+                            <span>(不会公开，请放心填写～)</span>
+                        </div>
+                        <h5 class="text-danger">{{form.email.errors}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            主题&nbsp;&nbsp;
+                        </label>
+                        <div class="radio col-sm-7">
+                            <label>
+                                <input type="radio" name="types" value="P">编程
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                <input type="radio" name="types" value="O"
+                                    checked="checked">其他
+                            </label>
+                        </div>
+                        <h5 class="text-danger">{{form.types.errors}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <label for="content" class="control-label col-sm-2">
+                            内容
+                        </label>
+                        <div class="col-sm-7">
+                            <textarea type="text" class="form-control" id="content"
+                                name="content" rows="7" required="required"
+                                placeholder="你的留言(500字以内)..."/>{{form.data.content}}</textarea>
+                        </div>
+                        <h5 class="text-danger">{{form.content.errors}}</h5>
+                    </div>
+                    <div class="form-group">
+                        <label for="notice" class="control-label col-sm-2">
+                            通知&nbsp;&nbsp;
+                        </label>
+                        <div class="checkbox col-sm-5">
+                            <label>
+                                <input type="checkbox" id="notice" name="notice">
+                                有回复时发邮件通知我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="submit" class="btn btn-primary" data-loading-text="正在上传...">
+                        提交
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

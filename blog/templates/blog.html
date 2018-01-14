@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}文章{% endblock %}
+
+{% block content %}
+<!-- 选项卡 begin -->
+<div class="col-md-9" id="article-left-panel">
+    <!-- 选项卡导航 -->
+    <ul class="nav nav-tabs" id="column-tabs">
+        <li class="{% if not this_column %}active{% endif %}">
+            <a href="{% url 'blog:index' %}">所有文章</a>
+        </li>
+        {% for column in columns %}
+        <li class="{% if this_column == column %}active{% endif %}">
+            <a href="{% url 'blog:index' %}?column={{column.id}}">{{ column.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- 文章列表 -->
+    <div class="tab-content" id="articles-of-page">
+        {% include 'widgets/article-list.html' %}
+    </div>
+</div>
+<!-- 选项卡 end-->
+
+<!-- 右侧栏 begin -->
+<div id="articlea-right-panel" class="col-md-3">
+    <!-- 搜索文章 -->
+    {% include 'widgets/search-card.html' %}
+    <!-- 标签  -->
+    {% include 'widgets/tags-card.html' %}
+    <!-- 文章归档 begin -->
+    {% include 'widgets/archives-card.html' %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ year }}年 | 存档{% endblock %}
+
+{% block cover %}
+<div id="cover">
+    <h4>
+    	<small>
+    		<i class="fa fa-map-marker"></i>&nbsp;你的位置:
+    		<a href="/">首页</a> >
+    		<a href="{% url 'blog:index' %}">博客</a> >
+    		存档 >
+            {{ year }}
+    	</small>
+    </h4>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="archive">
+    <h3 class="text-center">
+        <small class="fa fa-folder-open-o"></small>
+        <span class="text-danger">{{ year }}</span>&nbsp;年·共
+        <span class="text-danger">{{ count }}</span>&nbsp;篇文章
+    </h3>
+    <br/>
+    <table class="table table-striped">
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>
+                    <h4 class="layer2">
+                        {{ forloop.counter }}
+                        &nbsp;&nbsp;
+                        <a href="{% url 'blog:article' article.slug %}">
+                            {{ article.title }}
+                        </a>
+                        &nbsp;&nbsp;
+                        <small class="h6">
+                            ({{ article.created_time|date:"Y-m-d" }}&nbsp;&nbsp;
+                             {{ article.comment_set.count }}评论 / 
+                             {{article.visited_times}}阅读)
+                        </small>
+                    </h4>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

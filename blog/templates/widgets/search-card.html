@@ -1,0 +1,17 @@
+<div class="articles-right-card">
+        <h5><strong><i class="fa fa-search fa-lg"></i>&nbsp;搜索文章</strong></h5>
+        <div class="col-md-11">
+            <form class="form-horizontal" role="form" method="get" action="{% url 'blog:search' %}">
+                <div class="form-group">
+                    <div class="col-md-10" id="search-box">
+                        <input type="search" class="form-control" id="search"
+                            name="key" placeholder="请输入中文或英文关键词">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info" id="search-btn">go</button>
+                    </div>
+                </div>
+                <span class="text-danger" id="search-err"></span>
+            </form>
+        </div>
+    </div>

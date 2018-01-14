@@ -1,0 +1,46 @@
+<form class="form-horizontal" method="post" role="form"
+    action="{% spaceless %}{%if article %}
+                                {% url 'comment:comment-create' article.slug %}
+                            {% else %}
+                                {% url 'comment:comment-create' slug %}
+                            {% endif %}{% endspaceless %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="comment-nickname">昵称</label>
+        <div class="col-sm-4">
+            {{ form.errors.nickname }}
+            <input type="text" class="form-control" id="comment-nickname"
+                name="nickname" value="{{form.data.nickname}}"
+                placeholder="仅限中文，数字，字母和@_-"/>
+        </div>
+        <h5></h5>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="comment-email">邮箱</label>
+        <div class="col-sm-4">
+            {{ form.email.errors }}
+            <input type="email" class="form-control" id="comment-email"
+                name="email" value="{{form.data.email}}"
+                placeholder="不会公开，请放心填写～"/>
+        </div>
+        <h5></h5>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="comment-content">内容</label>
+        <div class="col-sm-8">
+            {{ form.errors.content }}
+            <textarea rows="6" class="form-control" id="comment-content"
+                name="content" placeholder="你的评论(1000字以内)..."
+                >{{form.data.content}}</textarea>
+        </div>
+        <h5></h5>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-11">
+            <button type="submit" class="btn btn-primary"
+                data-loading-text="正在上传...">
+                 提交
+             </button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+<ul class="pager">
+    <!-- 上一页 -->
+    {% if page_obj.has_previous %}
+    <li class="previous">
+        <a href="?{% spaceless %}
+                      {% if this_column %}
+                          column={{ this_column.id }}&amp;
+                      {% elif key %}
+                          key={{ key }}&amp;
+                      {% endif %}
+                  {% endspaceless %}page={{ page_obj.previous_page_number }}">
+    {% else %}
+    <li class="previous disabled"><a>
+    {% endif %}
+    上一页</a></li>
+    <span class="page-counter">
+        第 <span class="text-danger">{{ page_obj.number }}</span>
+        页，共 {{page_obj.paginator.num_pages }} 页
+    </span>
+
+    <!-- 下一页 -->
+    {% if page_obj.has_next %}
+    <li class="next">
+        <a href="?{% spaceless %}
+                      {% if this_column %}
+                          column={{ this_column.id }}&amp;
+                      {% elif key %}
+                          key={{ key }}&amp;
+                      {% endif %}
+                  {% endspaceless %}page={{ page_obj.next_page_number }}">
+    {% else %}
+    <li class="next disabled"><a>
+    {% endif %}
+    下一页</a></li>
+</ul>

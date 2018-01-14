@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block cover %}
+<div id="cover">
+	<h4>
+		<small>
+			<i class="fa fa-map-marker"></i>&nbsp;你的位置:
+			<a href="/">首页</a> >
+			<a href="{% url 'blog:index' %}">博客</a> >
+			{% if article %}
+				<a href="{% url 'blog:index' %}?column={{article.column_id}}">
+				{{ article.column }}
+				</a> >
+				文章详情
+			{% else %}
+				文章详情 > 评论修正
+			{% endif %}
+		</small>
+	</h4>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if article %}
+<article>
+	<div  class="text-center">
+		<h2>{{ article.title }}</h2>
+		<h4>
+			<small>
+				<span>Posted: {{ article.created_time|date:"Y-m-d" }}</span>
+				<span>
+					&nbsp;&nbsp;Tag:
+					<a href="{% url 'blog:tag' article.tag.id %}">{{ article.tag }}</a>
+				</span>
+				<span>&nbsp;&nbsp;Visits: {{ article.visited_times }}</span>
+				<span>&nbsp;&nbsp;Comments: {{ article.comment_set.count }}</span>
+			</small>
+		</h4>
+	</div>
+	<hr/>
+	<div id="article-content">
+		{% autoescape off %}
+			{{ article.content }}
+		{% endautoescape %}
+	</div>
+	<div id='comment-add'>
+		<h4 class="text-info">
+			&nbsp;<i class="fa fa-pencil fa-lg"></i>&nbsp;添加评论
+		</h4>
+		<br/>
+		{% include 'widgets/comment-form.html' %}
+	</div>
+	<div id="comment-list">
+		<h4 class="text-info">
+			&nbsp;<i class="fa fa-comments fa-lg"></i>
+			评论列表(共{{ article.comment_set.count }}条)
+		</h4>
+		{% include 'widgets/comment-list.html' %}
+	</div>
+</article>
+{% elif form.errors %}
+	<article>
+		<h4 class="text-danger col-md-offset-3">
+			<i class="fa fa-warning fa-lg"></i>
+			评论失败，请修正后再次提交！
+		</h4>
+		<br/>
+		{% include 'widgets/comment-form.html' %}
+	</article>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'js/comment.js' %}"></script>
+{% endblock %}
