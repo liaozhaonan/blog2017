@@ -106,12 +106,11 @@ https://liaozhaonan.herokuapp.com
 	EMAIL_HOST_USER  邮箱名称
 	EMAIL_HOST_PASSWORD  邮箱密码
 	EMAIL_SUBJECT_PREFIX  邮件Subject-line前缀
-	
-运行后，默认管理员用户名为 admin，密码为 password ， 请登录 http://your-domain/admin 更改密码。
+
 
 # 接下来该干什么？
 在浏览器中输入 http://127.0.0.1:8000/admin
-输入前面初始化数据库时的用户名密码。
+输入前面初始化数据库时createsuperuser操作设定的的用户名和密码进行登录。
 后台中，可以通过专栏、标签、文章、评论、评论回复、留言、留言回复等创建及管理相关内容
 
 
