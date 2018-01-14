@@ -41,15 +41,15 @@ https://liaozhaonan.herokuapp.com
 
     使用文本编辑器打开 ./project/setting.py, 设置其中的:
 
-       PAGE\_NUM 每页显示文章数
-       EMAIL\_HOST(你用的邮箱的smtp)
-       EMAIL\_PORT(smtp端口)
-       DEFAULT\_FROM\_EMAIL(邮件发送人名称)
+       PAGE_NUM 每页显示文章数
+       EMAIL_HOST(你用的邮箱的smtp)
+       EMAIL_PORT(smtp端口)
+       DEFAULT_FROM_EMAIL(邮件发送人名称)
 
     使用文本编辑器打开 ./project/local_setting.py, 设置其中的:
 
-       EMAIL\_HOST\_USER(你的邮箱的用户名)
-       EMAIL\_HOST\_PASSWORD(你的邮箱密码)
+       EMAIL_HOST_USER(你的邮箱的用户名)
+       EMAIL_HOST_PASSWORD(你的邮箱密码)
 
 **注意**：如果想用使用ssl的邮箱（比如qq邮箱），请安装django-smtp-ssl
   （详见https://github.com/bancek/django-smtp-ssl）
