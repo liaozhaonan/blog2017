@@ -3,7 +3,7 @@ zhaonan.com 网站源码
 
 # 概述
 zhaonan\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统**,
-实现了一个博客完整的功能。https://liaozhaonan.heroku.com 就是基于zhaonan\_blog 搭建的。
+实现了一个博客完整的功能。
 # 功能
 1. 文章,分类,专栏, 标签的添加，删除，修改以及文章按年度进行归档等。
 2. 首页支持最新文章列表、热门文章列表、推荐文章**轮播**等。
@@ -13,9 +13,6 @@ zhaonan\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **�
 6. 支持留言表单、评论表单和评论回复表单的**异步提交**功能
 7. 支持文章列表和评论列表的**分页**和**Ajax异步加载**功能。
 9. 使用bootstrap3框架，很好地支持**移动设备浏览**。
-
-# Demo
-https://liaozhaonan.herokuapp.com
 
 # 安装运行
 安装virtualenv:
